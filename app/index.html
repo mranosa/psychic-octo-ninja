@@ -10,6 +10,8 @@
         <meta name="description" content=""/>
         <meta name="viewport" content="width=device-width"/>
         <link rel="stylesheet" href="styles/main.css"/>
+        <script src='http://api.tiles.mapbox.com/mapbox.js/v0.6.7/mapbox.js'></script>
+        <link href='http://api.tiles.mapbox.com/mapbox.js/v0.6.7/mapbox.css' rel='stylesheet' />
 
     </head>
     <body ng-app="psychicOctoNinjaApp">
@@ -24,13 +26,15 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <div class="container" ng-view></div>
-
+        <div id='map' ng-controller="MapCtrl"></div>
+        <div id='map-ui' ng-view style="visibility: hidden;"></div>
         <script src="scripts/vendor/angular.js"></script>
 
         <!-- build:js scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/map.js"></script>
+        <script src="scripts/services/NotificationService.js"></script>
         <!-- endbuild -->
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

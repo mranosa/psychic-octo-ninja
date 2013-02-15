@@ -1,9 +1,7 @@
 'use strict';
 
-psychicOctoNinjaApp.controller('MainCtrl', function($scope) {
-  $scope.awesomeThings = [
-    'HTML5 Boilerplate',
-    'AngularJS',
-    'Testacular'
-  ];
-});
+psychicOctoNinjaApp.controller('MainCtrl', [ '$scope', function($scope) {
+	$scope.foo = function(param){
+		//stuff...
+	};
+}]);
