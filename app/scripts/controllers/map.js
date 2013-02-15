@@ -8,11 +8,14 @@ psychicOctoNinjaApp.controller('MapCtrl', [
 	var mapLayer = mapbox.layer().id('examples.map-zr0njcqy');
 
 	$scope.init = function(position){
+		var latitude = position ? position.coords.latitude : 0.69847032728747;
+		var longitude = position ? position.coords.longitude : -73.9514422416687;
+
 		map.addLayer(mapLayer);
 
 		map.centerzoom({
-			lat: position.coords.latitude,
-			lon: position.coords.longitude
+			lat: latitude,
+			lon: longitude
 		}, 17);
 
 		map.draw();
@@ -21,7 +24,6 @@ psychicOctoNinjaApp.controller('MapCtrl', [
 	//get current location
 	navigator.geolocation.getCurrentPosition(
 		function(position){
-			NotificationService.warning('Geoposition Inaccurate', 'Cant find your current address :(');
 			if(position.coords.accuracy > 50){
 				NotificationService.warning('Geoposition Inaccurate', 'Cant find your current address :(');
 			}
@@ -29,7 +31,8 @@ psychicOctoNinjaApp.controller('MapCtrl', [
 			$scope.init(position);
 		},
 		function(position){
-			alert('geolocation not supported!');
+			NotificationService.warning('Geolocation Unavailable', 'geolocation not supported!');
+			$scope.init();
 		},
 		{ enableHighAccuracy: true, maximumAge: 0, timeout: 30000 }
 	);
