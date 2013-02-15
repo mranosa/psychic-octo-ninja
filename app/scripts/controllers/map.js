@@ -1,6 +1,8 @@
 'use strict';
 
-psychicOctoNinjaApp.controller('MapCtrl', [ '$scope', function($scope) {
+psychicOctoNinjaApp.controller('MapCtrl', [ 
+	'$scope', 'NotificationService', 
+	function($scope, NotificationService) {
 
 	var map = mapbox.map('map');
 	var mapLayer = mapbox.layer().id('examples.map-zr0njcqy');
@@ -19,9 +21,9 @@ psychicOctoNinjaApp.controller('MapCtrl', [ '$scope', function($scope) {
 	//get current location
 	navigator.geolocation.getCurrentPosition(
 		function(position){
+			NotificationService.warning('Geoposition Inaccurate', 'Cant find your current address :(');
 			if(position.coords.accuracy > 50){
-				//TODO add in better notification
-				alert('Cant find your current address :(');
+				NotificationService.warning('Geoposition Inaccurate', 'Cant find your current address :(');
 			}
 
 			$scope.init(position);
