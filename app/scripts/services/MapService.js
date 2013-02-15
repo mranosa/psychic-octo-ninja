@@ -1,7 +1,7 @@
 'use strict';
 
 psychicOctoNinjaApp.factory('MapService', ['NotificationService', function(NotificationService) {
-	var map = mapbox.map('map');
+	var map = mapbox.map('map', null, null, []);
 	var mapLayer = mapbox.layer().id('examples.map-zr0njcqy');
 	var markerLayer = mapbox.markers.layer();
 
@@ -58,8 +58,11 @@ psychicOctoNinjaApp.factory('MapService', ['NotificationService', function(Notif
 
 
 	MapService.prototype = {
-		foo: function(params){
-			// stuff..
+		disable: function(){
+			$("#map").addClass("blur");
+		},
+		enable: function(){
+			$("#map").removeClass("blur");
 		}
 	}
 

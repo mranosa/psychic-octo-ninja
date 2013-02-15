@@ -1,7 +1,14 @@
 'use strict';
 
-psychicOctoNinjaApp.controller('MainCtrl', [ '$scope', function($scope) {
-	$scope.foo = function(param){
-		//stuff...
-	};
+psychicOctoNinjaApp.controller('MainCtrl', [ 
+	'$scope', 'MapService', '$timeout',
+	function($scope, MapService, $timeout) {
+	
+
+	MapService.disable();
+
+	$timeout(function() {
+          MapService.enable();
+    }, 5000);
+
 }]);
