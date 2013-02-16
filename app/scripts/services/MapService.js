@@ -10,7 +10,12 @@ psychicOctoNinjaApp.factory('MapService', ['NotificationService', function(Notif
 	var currLon;
 
 	var MapService = function() {
-		var initMap = function(position){
+		
+	};
+
+
+	MapService.prototype = {
+		init: function(position){
 			var latitude = position ? position.coords.latitude : 0.69847032728747;
 			var longitude = position ? position.coords.longitude : -73.9514422416687;
 
@@ -47,27 +52,7 @@ psychicOctoNinjaApp.factory('MapService', ['NotificationService', function(Notif
 			}, 17, true);
 
 			map.draw();
-		};
-
-		//get current location
-		navigator.geolocation.getCurrentPosition(
-			function(position){
-				if(position.coords.accuracy > 50){
-					NotificationService.warning('Geoposition Inaccurate', 'Cant find your current address :(');
-				}
-
-				initMap(position);
-			},
-			function(position){
-				NotificationService.warning('Geolocation Unavailable', 'geolocation not supported!');
-				initMap();
-			},
-			{ enableHighAccuracy: true, maximumAge: 0, timeout: 30000 }
-		);
-	};
-
-
-	MapService.prototype = {
+		},
 		disable: function(){
 			$("#map").addClass("blur");
 		},
