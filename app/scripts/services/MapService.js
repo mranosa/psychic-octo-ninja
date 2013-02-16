@@ -2,7 +2,7 @@
 
 psychicOctoNinjaApp.factory('MapService', ['NotificationService', function(NotificationService) {
 	var map = mapbox.map('map', null, null, []);
-	var mapLayer = mapbox.layer().id('examples.map-zr0njcqy');
+	var mapLayer = mapbox.layer().url('http://a.tiles.mapbox.com/v3/markenranosa.map-kkq63ne4.jsonp');
 	var markerLayer = mapbox.markers.layer();
 
 	var MapService = function() {
@@ -15,7 +15,8 @@ psychicOctoNinjaApp.factory('MapService', ['NotificationService', function(Notif
 			mapbox.markers.interaction(markerLayer);
   			map.addLayer(markerLayer);
 
-  			if(position.coords.accuracy <= 50){
+  			//TODO add user marker for now for testing
+  			//if(position.coords.accuracy <= 50){
 	  			//add marker for current location
 	  			markerLayer.add_feature({
 	  				geometry: {
@@ -28,7 +29,7 @@ psychicOctoNinjaApp.factory('MapService', ['NotificationService', function(Notif
 	  					description: 'This is ready to have fun!'
 	  				}
 	  			});
-  			}
+  			//}
 
 			//init user view
 			map.centerzoom({
