@@ -6,7 +6,7 @@ psychicOctoNinjaApp.controller('MainCtrl', [
 	
 	$scope.message = "Welcome to Quarterland<br>Relax now your Quarter is loading";
 
-	function doLoading(){
+	$scope.doLoading = function doLoading(){
 		$timeout(function() {
 			$scope.message = "Before you dig in, some remarks";
 			$timeout(function() {
@@ -15,9 +15,9 @@ psychicOctoNinjaApp.controller('MainCtrl', [
 					MapService.enable();
 					$("#map-ui").addClass("hide");
 					$location.path('/dashboard');
-				}, 3000);
-			}, 3000);
-		}, 3000);
+				}, 1000);
+			}, 1000);
+		}, 1000);
 	}
 
 	MapService.disable();
@@ -30,12 +30,12 @@ psychicOctoNinjaApp.controller('MainCtrl', [
 			}
 
 			MapService.init(position);
-			doLoading();
+			$scope.doLoading();
 		},
 		function(position){
 			NotificationService.warning('Geolocation Unavailable', 'geolocation not supported!');
 			MapService.init(position);
-			doLoading();
+			$scope.doLoading();
 		},
 		{ enableHighAccuracy: true, maximumAge: 0, timeout: 30000 }
 	);

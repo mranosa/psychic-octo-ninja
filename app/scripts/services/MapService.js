@@ -1,13 +1,8 @@
 'use strict';
 
 psychicOctoNinjaApp.factory('MapService', ['NotificationService', function(NotificationService) {
-	//var map = mapbox.map('map', null, null, []);
-	var map = mapbox.map('map', null);
-	//var mapLayer = mapbox.layer().url('http://a.tiles.mapbox.com/v3/markenranosa.map-kkq63ne4.jsonp');
-	var mapLayer = mapbox.layer().id('examples.map-vyofok3q');
-	var markerLayer = mapbox.markers.layer();
-	var currLat;
-	var currLon;
+
+	var map;
 
 	var MapService = function() {
 		
@@ -19,39 +14,19 @@ psychicOctoNinjaApp.factory('MapService', ['NotificationService', function(Notif
 			var latitude = position ? position.coords.latitude : 0.69847032728747;
 			var longitude = position ? position.coords.longitude : -73.9514422416687;
 
-			//init layers
-			map.addLayer(mapLayer);
-			mapbox.markers.interaction(markerLayer);
-  			map.addLayer(markerLayer);
+			map = L.map('map').setView([latitude, longitude], 17);
 
-  			//TODO add user marker for now for testing, only show me after if accurate
-  			//TODO add user capability to correct his/her current address
-  			//if(position.coords.accuracy <= 50){
-	  			//add marker for current location
+			L.tileLayer('http://{s}.tile.cloudmade.com/1c7e87133ec043f793feebe28707fb4e/997/256/{z}/{x}/{y}.png', {
+			    maxZoom: 17
+			}).addTo(map);
 
-	  			currLat = latitude;
-	  			currLon = longitude;
+			this.addMarker(longitude, latitude);
 
-	  			markerLayer.add_feature({
-	  				geometry: {
-	  					coordinates: [longitude, latitude]
-	  				},
-	  				properties: {
-	  					'marker-color': '#00bfff',
-	  					'marker-symbol': 'pitch',
-	  					title: 'You is this!',
-	  					description: 'This is ready to have fun!'
-	  				}
-	  			});
-  			//}
+			function onMapClick(e) {
+			    alert("You clicked the map at " + e.latlng);
+			}
 
-			//init user view
-			map.centerzoom({
-				lat: latitude,
-				lon: longitude
-			}, 17, true);
-
-			map.draw();
+			map.on('click', onMapClick);
 		},
 		disable: function(){
 			$("#map").addClass("blur");
@@ -60,28 +35,13 @@ psychicOctoNinjaApp.factory('MapService', ['NotificationService', function(Notif
 			$("#map").removeClass("blur");
 		},
 		addMarker: function (lon, lat, color, symbol, title, desc){
-			markerLayer.add_feature({
-				geometry: {
-					coordinates: [lon, lat]
-				},
-				properties: {
-					'marker-color': (color ? color : '#000'),
-					'marker-symbol': (symbol ? symbol : 'pitch'),
-					title: (title ? title : 'Come!'),
-					description: (desc ? desc : 'Lets Party!')
-				}
-			});
-
-			// map.centerzoom({
-			// 	lat: lat,
-			// 	lon: lon
-			// }, 17, true);
+			L.marker([lat, lon]).addTo(map);
 		},
 		getCurrLat: function(){
-			return currLat;
+
 		},
 		getCurrLon: function(){
-			return currLon
+
 		}
 	}
 
