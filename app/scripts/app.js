@@ -11,6 +11,10 @@ var psychicOctoNinjaApp = angular.module('psychicOctoNinjaApp', [])
         templateUrl: 'views/dashboard.html',
         controller: 'DashboardCtrl'
       })
+      .when('/activity/new', {
+        templateUrl: 'views/activity/new.html',
+        controller: 'Activity/NewCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
