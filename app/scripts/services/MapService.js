@@ -6,7 +6,7 @@ psychicOctoNinjaApp.factory('MapService', ['NotificationService', function(Notif
 	var meMarker;
 	var meIcon = L.icon({
 			    iconUrl: 'images/marker_icons/me_marker.png',
-			    iconAnchor: [15, 0]
+			    iconAnchor: [15, 10]
 			});
 
 	var MapService = function() {
@@ -71,6 +71,37 @@ psychicOctoNinjaApp.factory('MapService', ['NotificationService', function(Notif
 		}, 
 		getMap: function(){
 			return map;
+		},
+		addTestData: function(){
+			var latitude = this.getCurrLatLng().lat;
+			var longitude = this.getCurrLatLng().lng;
+			this.addMarker(
+				L.marker([
+					latitude - 0.001, 
+					longitude - 0.001
+				])
+			);
+
+			this.addMarker(
+				L.marker([
+					latitude + 0.002, 
+					longitude + 0.002
+				])
+			);
+
+			this.addMarker(
+				L.marker([
+					latitude - 0.002, 
+					longitude + 0.001
+				])
+			);
+
+			this.addMarker(
+				L.marker([
+					latitude + 0.002, 
+					longitude - 0.001
+				])
+			);
 		}
 	}
 

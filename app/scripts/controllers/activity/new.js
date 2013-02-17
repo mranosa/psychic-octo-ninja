@@ -32,7 +32,7 @@ psychicOctoNinjaApp.controller('Activity/NewCtrl', [
 
 	        $timeout(function() {
 				MapService.addMarker(L.marker(MapService.getCurrLatLng()));
-				$location.path('/dashboard');
+				//$location.path('/dashboard');
 			}, 500);
  		}
  	}
@@ -55,57 +55,23 @@ psychicOctoNinjaApp.controller('Activity/NewCtrl', [
  		$scope.currIndex -= 1;	
  	};
 
-// ----------------------- test
-//TODO remove me after testing
-		function loadTestData(){
-			var latitude = MapService.getCurrLatLng().lat;
-			var longitude = MapService.getCurrLatLng().lng;
-			MapService.addMarker(
-				L.marker([
-					latitude - 0.001, 
-					longitude - 0.001
-				])
-			);
 
-			MapService.addMarker(
-				L.marker([
-					latitude + 0.002, 
-					longitude + 0.002
-				])
-			);
 
-			MapService.addMarker(
-				L.marker([
-					latitude - 0.002, 
-					longitude + 0.001
-				])
-			);
-
-			MapService.addMarker(
-				L.marker([
-					latitude + 0.002, 
-					longitude - 0.001
-				])
-			);
-		}
-
-		//get current location
+ 	if(!MapService.getMap()){
+ 		//get current location
 		navigator.geolocation.getCurrentPosition(
 			function(position){
 				if(position.coords.accuracy > 50){
 					NotificationService.warning('Geoposition Inaccurate', 'Cant find your current address :(');
 				}
-
-				if(!MapService.getMap()) MapService.init(position);
-				loadTestData();
+				 MapService.init(position);
 			},
 			function(position){
 				NotificationService.warning('Geolocation Unavailable', 'geolocation not supported!');
-				if(!MapService.getMap()) MapService.init(position);
-				loadTestData();
+				MapService.init(position);
 			},
 			{ enableHighAccuracy: true, maximumAge: 0, timeout: 30000 }
 		);
-		//test end
+ 	}
 
 }]);
