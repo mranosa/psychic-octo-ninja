@@ -1,8 +1,8 @@
 'use strict';
 
 psychicOctoNinjaApp.controller('DashboardCtrl', [ 
-	'$scope', 'MapService', 'NotificationService',
-	function($scope, MapService, NotificationService) {
+	'$scope', 'MapService', 'NotificationService', '$timeout', '$location',
+	function($scope, MapService, NotificationService, $timeout, $location) {
   
 		//TODO remove me after testing
 		function loadTestData(){
@@ -57,9 +57,17 @@ psychicOctoNinjaApp.controller('DashboardCtrl', [
 		//test end
 
 		$scope.newActivity = function(){
+			$("#ctrl-new-ui").addClass("animated rotateOut");
 
+	        $timeout(function() {
+	            $("#ctrl-new-ui").removeClass("animated rotateOut");
+	            $location.path('/activity/new');
+	        }, 1000);
 		};
 
 		$("#ctrl-new-ui").addClass("animated bounceInDown");
+		$timeout(function() {
+	            $("#ctrl-new-ui").removeClass("animated bounceInDown");
+		}, 1000);
 
 }]);
