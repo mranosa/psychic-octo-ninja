@@ -31,8 +31,9 @@ psychicOctoNinjaApp.controller('Activity/NewCtrl', [
  			$("#ctrl-new-ui-back").addClass("animated fadeOut");
 
 	        $timeout(function() {
+	        	MapService.closeMePopup();
 				MapService.addMarker(L.marker(MapService.getCurrLatLng()));
-				//$location.path('/dashboard');
+				$location.path('/dashboard');
 			}, 500);
  		}
  	}

@@ -72,6 +72,9 @@ psychicOctoNinjaApp.factory('MapService', ['NotificationService', function(Notif
 		getMap: function(){
 			return map;
 		},
+		closeMePopup: function(){
+			meMarker.closePopup();
+		},
 		addTestData: function(){
 			var latitude = this.getCurrLatLng().lat;
 			var longitude = this.getCurrLatLng().lng;
