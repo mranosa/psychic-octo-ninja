@@ -68,6 +68,9 @@ psychicOctoNinjaApp.factory('MapService', ['NotificationService', function(Notif
 		},
 		getCurrLatLng: function(){
 			return meMarker.getLatLng();
+		}, 
+		getMap: function(){
+			return map;
 		}
 	}
 
