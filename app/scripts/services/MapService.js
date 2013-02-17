@@ -23,7 +23,8 @@ psychicOctoNinjaApp.factory('MapService', ['NotificationService', function(Notif
 				minZoom: 15,
 				maxZoom: 17,
 				zoomControl: false,
-				//fadeAnimation: true,
+				attributionControl: false,
+				fadeAnimation: true,
 				zoomAnimation: true,
 				markerZoomAnimation: true
 			}).setView([latitude, longitude], 17, true);
