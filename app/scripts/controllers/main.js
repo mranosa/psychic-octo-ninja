@@ -13,8 +13,10 @@ psychicOctoNinjaApp.controller('MainCtrl', [
 				$scope.message = "‘The world, as we perceive it, is our own invention.‘ Heinz von Foerster";
 				$timeout(function() {
 					MapService.enable();
-					$("#map-ui").addClass("hide");
-					$location.path('/dashboard');
+			        $("#map-ui").addClass("animated fadeOut");
+			        $timeout(function() {
+						$location.path('/dashboard');
+					}, 1000);
 				}, 1000);
 			}, 1000);
 		}, 1000);
