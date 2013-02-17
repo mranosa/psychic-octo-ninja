@@ -5,7 +5,8 @@ psychicOctoNinjaApp.factory('MapService', ['NotificationService', function(Notif
 	var map;
 	var meMarker;
 	var meIcon = L.icon({
-			    iconUrl: 'images/marker_icons/me_marker.png'
+			    iconUrl: 'images/marker_icons/me_marker.png',
+			    iconAnchor: [15, 0]
 			});
 
 	var MapService = function() {
@@ -37,7 +38,10 @@ psychicOctoNinjaApp.factory('MapService', ['NotificationService', function(Notif
 					icon: meIcon,
 					riseOnHover: true
 				});
+
 			this.addMarker(meMarker);
+
+			meMarker.bindPopup("<b>This is YOU!</b><br>Drag me to correct location.").openPopup();
 		},
 		disable: function(){
 			$("#map").addClass("blur");
@@ -50,6 +54,8 @@ psychicOctoNinjaApp.factory('MapService', ['NotificationService', function(Notif
 		},
 		addMarker: function (marker){
 			marker.addTo(map);
+
+			marker.bindPopup("<b>Party Party!</b><br>Lorem ipsum dolor.");
 
 			var lat = marker.getLatLng().lat;
 			var lng = marker.getLatLng().lng;
