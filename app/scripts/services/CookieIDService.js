@@ -1,15 +1,20 @@
 'use strict';
 
 psychicOctoNinjaApp.factory('CookieIDService', function() {
-  // Service logic
-  // ...
 
-  var meaningOfLife = 42;
+	var CookieIDService = function() {
+	    
+	};
 
-  // Public API here
-  return {
-    someMethod: function() {
-      return meaningOfLife;
-    }
-  };
+	CookieIDService.prototype = {
+		getId: function(){
+			if(!$.cookie('quarterland_for_life_id')){
+				$.cookie('quarterland_for_life_id', uuid.v4(), { expires: 365000, path: '/' });
+			}
+			
+			return $.cookie('quarterland_for_life_id');
+		}
+	}
+
+	return new CookieIDService();
 });
