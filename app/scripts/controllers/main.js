@@ -1,8 +1,8 @@
 'use strict';
 
 psychicOctoNinjaApp.controller('MainCtrl', [ 
-	'$scope', 'MapService', '$timeout', '$location', 'NotificationService',
-	function($scope, MapService, $timeout, $location, NotificationService) {
+	'$scope', 'MapService', '$timeout', '$location', 'NotificationService', 'UserService',
+	function($scope, MapService, $timeout, $location, NotificationService, UserService) {
 	
 	$scope.message = "Welcome to Quarterland<br>Relax now your Quarter is loading";
 
@@ -39,7 +39,7 @@ psychicOctoNinjaApp.controller('MainCtrl', [
 			MapService.init(position);
 			$scope.doLoading();
 		},
-		{ enableHighAccuracy: true, maximumAge: 0, timeout: 30000 }
+		{ enableHighAccuracy: true, maximumAge: 0, timeout: 5000 }
 	);
 
 }]);
