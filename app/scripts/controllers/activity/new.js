@@ -15,11 +15,31 @@ psychicOctoNinjaApp.controller('Activity/NewCtrl', [
  			'How can you be found?',
  			'Got something to say?',
  			'Review your announcement'
+ 		],
+ 		page: [
+ 			true,
+ 			false,
+ 			false,
+ 			false,
+ 			false,
+ 			false
  		]
- 	}
+ 	};
+
+ 	function showPage(index){
+ 		$scope.form.page[0] = false;
+ 		$scope.form.page[1] = false;
+ 		$scope.form.page[2] = false;
+ 		$scope.form.page[3] = false;
+ 		$scope.form.page[4] = false;
+ 		$scope.form.page[5] = false;
+
+		$scope.form.page[index] = true;
+ 	};
 
  	$scope.doNext = function(){
  		$scope.currIndex += 1;
+ 		showPage($scope.currIndex);
 
  		if($scope.currIndex === 5){
  			$scope.nextText = 'Publish!';
@@ -58,6 +78,7 @@ psychicOctoNinjaApp.controller('Activity/NewCtrl', [
  		}
 
  		$scope.currIndex -= 1;	
+ 		showPage($scope.currIndex);
  	};
 
 
