@@ -16,8 +16,8 @@ psychicOctoNinjaApp.factory('MapService', ['NotificationService', function(Notif
 
 	MapService.prototype = {
 		init: function(position){
-			var latitude = position ? position.coords.latitude : 0.69847032728747;
-			var longitude = position ? position.coords.longitude : -73.9514422416687;
+			var latitude = (typeof position.coords != 'undefined') ? position.coords.latitude : 38.898556;
+			var longitude = (typeof position.coords != 'undefined') ? position.coords.longitude : -77.037852;
 
 			map = L.map('map', {
 				minZoom: 15,
