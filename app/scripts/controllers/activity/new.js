@@ -1,8 +1,8 @@
 'use strict';
 
 psychicOctoNinjaApp.controller('Activity/NewCtrl', [
-	'$scope', 'MapService', 'NotificationService', '$timeout', '$location',
- 	function($scope, MapService, NotificationService, $timeout, $location) {
+	'$scope', 'MapService', 'NotificationService', '$timeout', '$location', 'EventService',
+ 	function($scope, MapService, NotificationService, $timeout, $location, EventService) {
 
  	$scope.backText = 'Back';
  	$scope.nextText = 'Next&nbsp;<i class="icon-arrow-right icon-white"></i>';
@@ -33,6 +33,10 @@ psychicOctoNinjaApp.controller('Activity/NewCtrl', [
 	        $timeout(function() {
 	        	MapService.closeMePopup();
 				MapService.addMarker(L.marker(MapService.getCurrLatLng()));
+				//TODO refactor me to be one event object
+				EventService.addEvent({
+					latlng: MapService.getCurrLatLng()
+				});
 				$location.path('/dashboard');
 			}, 500);
  		}

@@ -1,8 +1,8 @@
 'use strict';
 
 psychicOctoNinjaApp.controller('DashboardCtrl', [ 
-	'$scope', 'MapService', 'NotificationService', '$timeout', '$location',
-	function($scope, MapService, NotificationService, $timeout, $location) {
+	'$scope', 'MapService', 'NotificationService', '$timeout', '$location', 'EventService',
+	function($scope, MapService, NotificationService, $timeout, $location, EventService) {
 
 		$scope.newActivity = function(){
 			$("#ctrl-new-ui").addClass("animated rotateOut");

@@ -1,13 +1,14 @@
 'use strict';
 
-psychicOctoNinjaApp.factory('EventService',['$rootScope', function($rootScope) {
+psychicOctoNinjaApp.factory('EventService',[
+	'$rootScope', 'NotificationService',
+	function($rootScope, NotificationService) {
 
 	var eventsRef = new Firebase('https://hanael.firebaseIO.com/events');
 
 	var EventService = function() {
-		eventsRef.on('value', function(dataSnapshot) {
+		eventsRef.on('child_added', function(dataSnapshot) {
 			var newEvent = dataSnapshot.val();
-			NotificationService.info('New Event!', 'New activity in your area! :)');
 			$rootScope.$broadcast('new_event', newEvent);
 		});
 	};
@@ -19,4 +20,4 @@ psychicOctoNinjaApp.factory('EventService',['$rootScope', function($rootScope) {
 	}
 
 	return new EventService();
-});
+}]);
