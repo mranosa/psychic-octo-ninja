@@ -15,6 +15,9 @@ psychicOctoNinjaApp.controller('MainCtrl', [
 					MapService.enable();
 			        $("#map-ui").addClass("animated fadeOut");
 			        $timeout(function() {
+			        	//TODO of status is bum go to dashboard
+			        	//TODO of status is creator go to event
+			        	//TODO of status is joiner go to event
 						$location.path('/dashboard');
 					}, 1000);
 				}, 1000);
