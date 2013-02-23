@@ -11,14 +11,12 @@ psychicOctoNinjaApp.controller('Activity/NewCtrl', [
  		title: [
  			'What is happening in Quarterland?',
  			'Drag your map to your exact position',
- 			'How long are you going to do it?',
  			'How can you be found?',
  			'Got something to say?',
  			'Review your announcement'
  		],
  		page: [
  			true,
- 			false,
  			false,
  			false,
  			false,
@@ -32,7 +30,6 @@ psychicOctoNinjaApp.controller('Activity/NewCtrl', [
  		$scope.form.page[2] = false;
  		$scope.form.page[3] = false;
  		$scope.form.page[4] = false;
- 		$scope.form.page[5] = false;
 
 		$scope.form.page[index] = true;
  	};
@@ -41,11 +38,11 @@ psychicOctoNinjaApp.controller('Activity/NewCtrl', [
  		$scope.currIndex += 1;
  		showPage($scope.currIndex);
 
- 		if($scope.currIndex === 5){
+ 		if($scope.currIndex === 4){
  			$scope.nextText = 'Publish!';
  		}
 
- 		if($scope.currIndex === 6){
+ 		if($scope.currIndex === 5){
  			$("#form-new-title").addClass("animated fadeOut");
  			$("#ctrl-new-ui-next").addClass("animated fadeOut");
  			$("#ctrl-new-ui-back").addClass("animated fadeOut");
@@ -63,7 +60,7 @@ psychicOctoNinjaApp.controller('Activity/NewCtrl', [
  	}
 
  	$scope.doBack = function(){
- 		if($scope.currIndex < 6){
+ 		if($scope.currIndex < 5){
  			$scope.nextText = 'Next&nbsp;<i class="icon-arrow-right icon-white"></i>';
  		}
 
