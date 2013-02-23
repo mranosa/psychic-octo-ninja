@@ -4,12 +4,12 @@
 	</div>
 </div>
 
-<div id="form-new-body">
+<div id="form-new-body" ng-hide="form.page[1]">
 	<div class="form-new-body-content">
 		<div ng-show="form.page[0]">
 			<textarea rows="5"></textarea>
 		</div>
-		<div ng-show="form.page[1]">page2</div>
+		<!-- <div ng-show="form.page[1]">page2</div> -->
 		<div ng-show="form.page[2]">page3</div>
 		<div ng-show="form.page[3]">page4</div>
 		<div ng-show="form.page[4]">page5</div>
