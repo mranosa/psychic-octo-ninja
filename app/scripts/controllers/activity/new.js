@@ -8,6 +8,9 @@ psychicOctoNinjaApp.controller('Activity/NewCtrl', [
  	$scope.nextText = 'Next&nbsp;<i class="icon-arrow-right icon-white"></i>';
  	$scope.currIndex = 0;
  	$scope.form = {
+ 		what: '',
+ 		how: '',
+ 		extra: '',
  		title: [
  			'What is happening in Quarterland?',
  			'Drag your map to your exact position',
