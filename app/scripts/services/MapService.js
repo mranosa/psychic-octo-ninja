@@ -53,7 +53,7 @@ psychicOctoNinjaApp.factory('MapService', ['NotificationService', function(Notif
 		removeMarker: function(marker){
 			map.removeLayer(marker);
 		},
-		addMarker: function (newEvent){
+		addEvent: function (newEvent){
 			var marker = L.marker(newEvent.latlng);
 			marker.addTo(map);
 

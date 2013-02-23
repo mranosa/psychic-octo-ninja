@@ -58,7 +58,7 @@ psychicOctoNinjaApp.controller('Activity/NewCtrl', [
 			 		extra: $scope.form.extra
 				};
 	        	MapService.closeMePopup();
-				MapService.addMarker(newEvent);
+				MapService.addEvent(newEvent);
 				EventService.addEvent(newEvent);
 				$location.path('/dashboard');
 			}, 500);
