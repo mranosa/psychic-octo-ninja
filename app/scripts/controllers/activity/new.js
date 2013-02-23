@@ -55,7 +55,10 @@ psychicOctoNinjaApp.controller('Activity/NewCtrl', [
 				MapService.addMarker(L.marker(MapService.getCurrLatLng()));
 				//TODO refactor me to be one event object
 				EventService.addEvent({
-					latlng: MapService.getCurrLatLng()
+					latlng: MapService.getCurrLatLng(),
+					what: $scope.form.what,
+			 		how: $scope.form.how,
+			 		extra: $scope.form.extra
 				});
 				$location.path('/dashboard');
 			}, 500);
