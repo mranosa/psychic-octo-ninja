@@ -40,7 +40,7 @@ psychicOctoNinjaApp.factory('MapService', ['NotificationService', function(Notif
 					riseOnHover: true
 				});
 
-			this.addMarker(meMarker);
+			meMarker.addTo(map);
 
 			meMarker.bindPopup("<b>This is YOU!</b><br>Drag me to correct location.").openPopup();
 		},
@@ -53,13 +53,11 @@ psychicOctoNinjaApp.factory('MapService', ['NotificationService', function(Notif
 		removeMarker: function(marker){
 			map.removeLayer(marker);
 		},
-		addMarker: function (marker){
+		addMarker: function (newEvent){
+			var marker = L.marker(newEvent.latlng);
 			marker.addTo(map);
 
-			marker.bindPopup("<b>Party Party!</b><br>Lorem ipsum dolor.");
-
-			var lat = marker.getLatLng().lat;
-			var lng = marker.getLatLng().lng;
+			marker.bindPopup("<b>" + newEvent.what + "</b><br>" + newEvent.how);
 
 			//center on click
 			marker.on('dblclick', function(){

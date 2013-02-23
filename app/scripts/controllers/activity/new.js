@@ -51,15 +51,15 @@ psychicOctoNinjaApp.controller('Activity/NewCtrl', [
  			$("#ctrl-new-ui-back").addClass("animated fadeOut");
 
 	        $timeout(function() {
-	        	MapService.closeMePopup();
-				MapService.addMarker(L.marker(MapService.getCurrLatLng()));
-				//TODO refactor me to be one event object
-				EventService.addEvent({
+	        	var newEvent = {
 					latlng: MapService.getCurrLatLng(),
 					what: $scope.form.what,
 			 		how: $scope.form.how,
 			 		extra: $scope.form.extra
-				});
+				};
+	        	MapService.closeMePopup();
+				MapService.addMarker(newEvent);
+				EventService.addEvent(newEvent);
 				$location.path('/dashboard');
 			}, 500);
  		}
