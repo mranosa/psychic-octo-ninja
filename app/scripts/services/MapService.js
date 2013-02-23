@@ -72,37 +72,6 @@ psychicOctoNinjaApp.factory('MapService', ['NotificationService', function(Notif
 		},
 		closeMePopup: function(){
 			meMarker.closePopup();
-		},
-		addTestData: function(){
-			var latitude = this.getCurrLatLng().lat;
-			var longitude = this.getCurrLatLng().lng;
-			this.addMarker(
-				L.marker([
-					latitude - 0.001, 
-					longitude - 0.001
-				])
-			);
-
-			this.addMarker(
-				L.marker([
-					latitude + 0.002, 
-					longitude + 0.002
-				])
-			);
-
-			this.addMarker(
-				L.marker([
-					latitude - 0.002, 
-					longitude + 0.001
-				])
-			);
-
-			this.addMarker(
-				L.marker([
-					latitude + 0.002, 
-					longitude - 0.001
-				])
-			);
 		}
 	}
 
