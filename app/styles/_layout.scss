@@ -64,7 +64,7 @@ body {
 	bottom: 10%;
 	left: 65%;
 	height: 30px;
-	width: 77px;
+	width: 85px;
 	margin-left: -30px;
 	padding: 10px;
 	-webkit-border-radius: 5px;
@@ -77,6 +77,10 @@ body {
 		-webkit-border-radius: 5px;
 		border-radius: 5px;
 	}
+
+	button {
+		width: 100%;
+	}
 }
 
 #ctrl-new-ui-back {
@@ -86,7 +90,7 @@ body {
 	bottom: 10%;
 	left: 33%;
 	height: 30px;
-	width: 81px;
+	width: 85px;
 	margin-left: -30px;
 	padding: 10px;
 	-webkit-border-radius: 5px;
@@ -98,6 +102,10 @@ body {
 		background: white;
 		-webkit-border-radius: 5px;
 		border-radius: 5px;
+	}
+
+	button {
+		width: 100%;
 	}
 }
 
